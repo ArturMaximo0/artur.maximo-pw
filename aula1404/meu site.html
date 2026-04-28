@@ -1,31 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Minha Calculadora</title>
 </head>
 <body>
-    <header>
-        <h1>Meu Site </h1>
-        <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contador</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Bem-vindo!</h2>
-            <p>Este é um sistema básico feito com HTML e CSS.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 - Meu Site</p>
-    </footer>
+    <center><h1>Minha Calculadora</h1>
+    Primeiro número<br>
+    <input type="number" id="n1"><br>
+    Segundo Número<br>
+    <input type="number" id="n2"><br><br>
+    <button onclick="somar()">Somar</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="dividir()">Divir</button>
+    <br>
+    O resultado é <span id="resultado"></span>
+    </center>
+    <script src="js/calculo.js"></script>
 </body>
 </html>
