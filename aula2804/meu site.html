@@ -4,22 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Calculadora</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <center><h1>Minha Calculadora</h1>
-    Primeiro número<br>
-    <input type="number" id="n1"><br>
-    Segundo Número<br>
-    <input type="number" id="n2"><br><br>
-    <button onclick="somar()">Somar</button>
-    <button onclick="subtrair()">Subtrair</button>
-    <button onclick="multiplicar()">Multiplicar</button>
-    <button onclick="dividir()">Divir</button>
-    <button onclick="areaT()">Área do triângulo</button>
-    <button onclick="areaQ()">Área do quadrado</button>
-    <button onclick="idade()">Verifica se é maior de idade</button>
-    <br>
-    O resultado é <span id="resultado"></span>
+    <center>
+        <h1>Minha Calculadora</h1>
+        Primeiro número<br>
+        <input type="number" id="n1"><br>
+        Segundo Número<br>
+        <input type="number" id="n2"><br>
+        
+        <div class="linha-botoes">
+            <button class="somar" onclick="somar()">+ Somar</button>
+            <button class="subtrair" onclick="subtrair()">- Subtrair</button>
+            <button class="multiplicar" onclick="multiplicar()">× Multiplicar</button>
+            <button class="dividir" onclick="dividir()">÷ Dividir</button>
+        </div>
+        
+        <div class="linha-botoes">
+            <button class="areaT" onclick="areaT()">△ Triângulo</button>
+            <button class="areaQ" onclick="areaQ()">⬜ Quadrado</button>
+            <button class="idade" onclick="idade()">👤 Idade</button>
+        </div>
+        
+        <div class="linha-botoes">
+            <button class="retirar" onclick="retirar()">-10%</button>
+            <button class="lucro" onclick="lucro()">+15%</button>
+            <button class="desconto" onclick="desconto()">-3%</button>
+            <button class="venda" onclick="venda()">💰 Venda</button>
+        </div>
+        
+        <div>O resultado é <span id="resultado">--</span></div>
     </center>
     <script src="js/calculo.js"></script>
 </body>

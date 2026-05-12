@@ -1,0 +1,73 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+center {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+h1 { color: #333; margin-bottom: 20px; }
+
+input {
+    width: 250px;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.linha-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 90px;
+}
+
+/* 🔴 CORES DOS BOTÕES */
+.somar { background: #e74c3c !important; }
+.subtrair { background: #f39c12 !important; }
+.multiplicar { background: #27ae60 !important; }
+.dividir { background: #3498db !important; }
+.areaT { background: #9b59b6 !important; }
+.areaQ { background: #f1c40f !important; color: #333 !important; }
+.idade { background: #e67e22 !important; }
+.retirar { background: #c0392b !important; }
+.lucro { background: #2ecc71 !important; }
+.desconto { background: #e91e63 !important; }
+.venda { background: #9c27b0 !important; }
+
+button:hover { transform: scale(1.05); }
+
+#resultado {
+    background: #27ae60;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 20px 0;
+    min-width: 200px;
+}
