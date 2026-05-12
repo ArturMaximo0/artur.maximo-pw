@@ -56,13 +56,15 @@ function desconto(){
     resultado.innerHTML = Number(n1.value) - (Number(n1.value) * 0.03)
 }
 function venda(){
-    if (Number(n1.value) > 1000){
-        resultado.innerHTML = Number(n1.value) - (Number(n1.value) * 0.07)
+    if(Number(n1.value) <= 200){
+        alert("Boa compra")
     }
     else if(Number(n1.value) <= 500 && Number(n1.value) > 200){
         resultado.innerHTML = Number(n1.value) + (Number(n1.value) * 0.05)
     }
-    else if(Number(n1.value) <= 200){
-        alert("Boa compra")
+    else if (Number(n1.value) >= 1000){
+        resultado.innerHTML = Number(n1.value) - (Number(n1.value) * 0.07)
     }
+    
+    
 }
