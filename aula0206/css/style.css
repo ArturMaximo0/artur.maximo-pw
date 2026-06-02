@@ -1,0 +1,48 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+.container{
+    width: 900px;
+    margin: auto;
+}
+
+h1{
+    color: #444;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+img{
+    width: 120px;
+}
+
+.btn{
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.menos{
+    background-color: red;
+}
+
+.mais{
+    background-color: green;
+}
+
+.subtotal{
+    margin-top: 10px;
+    text-align: right;
+    font-weight: bold;
+}
