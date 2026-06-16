@@ -1,102 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Lojinha Camargo</title>
-
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Lojinha Camargo</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🛒 Lojinha Camargo</h1>
+    <h1>🛒 Lojinha Camargo</h1>
 
-<table>
+    <table>
 
-<tr>
-    <th>Imagem</th>
-    <th>Produto</th>
-    <th>Preço Unitário</th>
-    <th>Qtd</th>
-    <th>Total</th>
-</tr>
+        <tr>
+            <th>Imagem</th>
+            <th>Produto</th>
+            <th>Preço Unitário</th>
+            <th>Qtd</th>
+            <th>Total</th>
+        </tr>
 
-<tr>
-    <td>
-        <img src="images/motorola.jpg" alt="">
-    </td>
+        <tr>
+            <td>
+                <img src="images/motorola.jpg" alt="">
+            </td>
 
-    <td>
-        Celular Top Motorola<br>
-        Código 1234ABC<br>
-        Cor Preto
-    </td>
+            <td>
+                Celular Top Motorola<br>
+                Código 1234ABC<br>
+                Cor Preto
+            </td>
 
-    <td id = "preço1"> 1.000</td>
+            <td id="preco1">1000</td>
 
-    <td>
-        <button class="btn menos" onclick="mudarQ(1,-1)">-</button>
-        <span id = "qtd1"> 0 </span>
-        <button class="btn mais" onclick="mudarQ(1,1)"> + </button>
-    </td>
+            <td>
+                <button class="btn menos" onclick="mudarQ(1,-1)">-</button>
+                <span id="qtd1">0</span>
+                <button class="btn mais" onclick="mudarQ(1,1)">+</button>
+            </td>
 
-    <td id = "total1"> 0 </td>
-</tr>
+            <td id="total1">0</td>
+        </tr>
 
-<tr>
-    <td>
-        <img src="images/tv.jpg" alt="">
-    </td>
+        <tr>
+            <td>
+                <img src="images/tv.jpg" alt="">
+            </td>
 
-    <td>
-        Televisão Ultra<br>
-        Código 1111ABC<br>
-        Cor Preto
-    </td>
+            <td>
+                Televisão Ultra<br>
+                Código 1111ABC<br>
+                Cor Preto
+            </td>
 
-    <td id = "preço2"> 70.000</td>
+            <td id="preco2">70000</td>
 
-    <td>
-        <button class="btn menos" onclick="mudarQ(2,-1)">-</button>
-        <span id = "qtd2"> 0 </span>
-        <button class="btn mais"onclick="mudarQ(2,1)">+</button>
-    </td>
+            <td>
+                <button class="btn menos" onclick="mudarQ(2,-1)">-</button>
+                <span id="qtd2">0</span>
+                <button class="btn mais" onclick="mudarQ(2,1)">+</button>
+            </td>
 
-    <td id = "total1"> 0 </td>
-</tr>
+            <td id="total2">0</td>
+        </tr>
 
-<tr>
-    <td>
-        <img src="images/notebook.jpg" alt="">
-    </td>
+        <tr>
+            <td>
+                <img src="images/notebook.jpg" alt="">
+            </td>
 
-    <td>
-        Notebook Dell Ultra<br>
-        Código 2378ABC<br>
-        Cor Preto
-    </td>
+            <td>
+                Notebook Dell Ultra<br>
+                Código 2378ABC<br>
+                Cor Preto
+            </td>
 
-    <td id = "preço3"> 9.000</td>
+            <td id="preco3">9000</td>
 
-    <td>
-        <button class="btn menos" onclick="mudarQ(3,-1)">-</button>
-        <span id = "qtd3"> 0 </span>
-        <button class="btn mais" onclick="mudarQ(3,1)">+</button>
-    </td>
+            <td>
+                <button class="btn menos" onclick="mudarQ(3,-1)">-</button>
+                <span id="qtd3">0</span>
+                <button class="btn mais" onclick="mudarQ(3,1)">+</button>
+            </td>
 
-    <td id = "total1"> 0 </td>
-</tr>
+            <td id="total3">0</td>
+        </tr>
 
-</table>
+    </table>
 
-<div class="subtotal">
-    SUBTOTAL: <span id = "subtotal"> 0 </span>
+    <div class="subtotal">
+        SUBTOTAL: R$ <span id="subtotal">0</span>
+    </div>
+
 </div>
 
-</div>
+<script src="js/script.js"></script>
 
 </body>
 </html>
