@@ -1,0 +1,78 @@
+Faça um resumo bem diádico sobre a lista de conceitos que irei te passar, quero uma explicação técnica e curta seguida de um exemplo pratico simples.
+Arrays;
+listas ligadas;
+lista simples;
+duplas e circulares;
+pilhas;
+filas;
+alocação dinâmica;
+recursividade;
+listas encadeadas;
+tabelas de espalhamento e arvore;
+pilhas e filas.
+
+métodos de ordenação
+
+métodos de ordenação e busca
+
+
+Estruturas de Dados e Algoritmos — Resumo Didático
+Arrays
+
+Técnico: Estrutura de dados que armazena elementos do mesmo tipo em posições contíguas de memória, acessados por índice. Acesso em O(1), mas inserção/remoção no meio é O(n).
+Exemplo: Uma lista de notas de alunos [7.5, 8.0, 9.2, 6.5] — para pegar a nota do 3º aluno, basta acessar notas[2].
+
+Listas Ligadas (Encadeadas) — Simples
+
+Técnico: Cada elemento (nó) contém um dado e um ponteiro para o próximo nó. Não exige memória contígua, permitindo inserção/remoção em O(1) quando já se tem a referência do nó.
+Exemplo: Uma fila de pessoas numa senha de banco, onde cada pessoa só sabe "quem vem depois dela" — não dá pra pular direto pro 5º da fila, tem que percorrer um por um.
+
+Listas Duplamente Encadeadas
+
+Técnico: Cada nó tem ponteiro para o próximo e para o anterior, permitindo percorrer a lista nos dois sentidos.
+Exemplo: O histórico de navegação de um navegador — você consegue voltar (anterior) e avançar (próximo) entre páginas.
+
+Listas Circulares
+
+Técnico: O último nó aponta de volta para o primeiro, formando um ciclo, sem "fim" definido.
+Exemplo: Um jogo de tabuleiro tipo "batata quente", onde depois do último jogador a vez volta pro primeiro.
+
+Pilhas (Stacks)
+
+Técnico: Estrutura LIFO (Last In, First Out) — o último elemento inserido é o primeiro a sair. Operações principais: push (inserir) e pop (remover).
+Exemplo: Uma pilha de pratos — você só consegue tirar o de cima, que foi o último colocado.
+
+Filas (Queues)
+
+Técnico: Estrutura FIFO (First In, First Out) — o primeiro elemento inserido é o primeiro a sair. Operações: enqueue (inserir no fim) e dequeue (remover do início).
+Exemplo: Fila de banco — quem chega primeiro é atendido primeiro.
+
+Alocação Dinâmica
+
+Técnico: Reserva de memória em tempo de execução (não em tempo de compilação), permitindo estruturas que crescem/diminuem conforme necessário (ex: malloc/free em C, new em outras linguagens).
+Exemplo: Um app de notas que cresce a lista de tarefas conforme o usuário adiciona itens, sem tamanho fixo definido de antemão.
+
+Recursividade
+
+Técnico: Técnica onde uma função chama a si mesma para resolver subproblemas menores, até atingir um caso base que interrompe a chamada.
+Exemplo: Calcular fatorial: fatorial(4) = 4 * fatorial(3) = 4 * 3 * fatorial(2)... até chegar em fatorial(1) = 1.
+
+Tabelas de Espalhamento (Hash Tables)
+
+Técnico: Estrutura que mapeia chaves a valores usando uma função hash, que converte a chave num índice de acesso quase O(1). Colisões são tratadas por encadeamento ou endereçamento aberto.
+Exemplo: Uma agenda telefônica onde o nome "João" é convertido num código que aponta direto pra posição do número dele, sem precisar procurar um por um.
+
+Árvores
+
+Técnico: Estrutura hierárquica não-linear com um nó raiz e nós filhos, sem ciclos. Árvores binárias de busca mantêm ordem, permitindo buscas em O(log n).
+Exemplo: A árvore genealógica de uma família, ou o sistema de pastas do computador (pasta raiz → subpastas → arquivos).
+
+Métodos de Ordenação
+
+Técnico: Algoritmos que reorganizam elementos segundo um critério (crescente/decrescente). Variam em complexidade: Bubble Sort (O(n²), simples), Merge Sort e Quick Sort (O(n log n), mais eficientes).
+Exemplo: Ordenar [5, 2, 8, 1] para [1, 2, 5, 8] — como organizar cartas de baralho na mão por valor.
+
+Métodos de Busca
+
+Técnico: Algoritmos para localizar um elemento numa estrutura. Busca Linear (O(n)) verifica item a item; Busca Binária (O(log n)) divide o espaço de busca ao meio, mas exige dados ordenados.
+Exemplo: Procurar uma palavra no dicionário: em vez de ler página por página (linear), você abre no meio e decide se a palavra está antes ou depois (binária).
