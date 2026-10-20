@@ -159,6 +159,18 @@ tbody tr td.acao {
   border-radius: 10px; 
   width: 50%; 
 } 
+
+.modal form {
+  width: 100%;
+}
+
+#mensagem-erro {
+  color: #b00020;
+}
+
+#cancelar {
+  background-color: #666;
+}
  
 .modal label { 
   font-size: 14px; 

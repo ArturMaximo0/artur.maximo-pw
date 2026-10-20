@@ -2,9 +2,9 @@
   "name": "aula0610",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,11 +12,6 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1",
-    "mongoose": "^9.11.0",
-    "nodemon": "^1.14.10"
-  },
-   "repository": { 
-    "type": "git", 
-    "url": "exit" 
+    "mysql2": "^3.14.1"
   }
 }

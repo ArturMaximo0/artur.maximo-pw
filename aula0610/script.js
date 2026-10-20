@@ -1,211 +1,147 @@
-const modal = document.querySelector('.modal-container')
-const tbody = document.querySelector('tbody')
-const sNome = document.querySelector('#m-funcao')
-const sFuncao = document.querySelector('#m-funcao')
-const sSalario = document.querySelector('#m-salario')
-const btnSalvar = document.querySelector('#btnSalvar')
+const API_BASE = '/api/funcionarios';
+const modal = document.querySelector('.modal-container');
+const form = document.querySelector('#funcionario-form');
+const tbody = document.querySelector('tbody');
+const sNome = document.querySelector('#m-nome');
+const sFuncao = document.querySelector('#m-funcao');
+const sSalario = document.querySelector('#m-salario');
+const mensagemErro = document.querySelector('#mensagem-erro');
 
-let itens
-let id
+let itens = [];
+let funcionarioEmEdicao;
 
-function openModal(edit = false, index = 0) {
-    modal.classList.add('active')
+async function requestApi(url, options) {
+  let response;
+  try {
+    response = await fetch(url, options);
+  } catch (error) {
+    throw new Error('Não foi possível acessar a API. Verifique se o servidor está rodando em http://localhost:3000.');
+  }
 
-    modal.onclick = e => {
-        if (e.target.className.indexOf('modal-container') !== -1) {
-            modal.classList.remove('active')
-        }
-    }
+  const responseText = await response.text();
+  let body = {};
+  try {
+    body = responseText ? JSON.parse(responseText) : {};
+  } catch {
+    body = {};
+  }
 
-    if(edit) {
-        sNome.value = itens[index].nome
-        sFuncao.value = itens[index].funcao
-        sSalario.value = itens[index].salario
-        id = index
-    } else {
-        sNome.value = ''
-        sFuncao.value = ''
-        sSalario.value = ''
-    }
+  if (!response.ok) {
+    throw new Error(body.error || `Erro HTTP ${response.status} ao acessar a API.`);
+  }
+
+  return body;
 }
 
-function editItem(index) {
-    id = itens[index].id //armazena ID para update
-    openModal(true, index);
+function openModal(funcionario) {
+  form.reset();
+  mensagemErro.textContent = '';
+  funcionarioEmEdicao = funcionario?.id;
+
+  if (funcionario) {
+    sNome.value = funcionario.nome;
+    sFuncao.value = funcionario.funcao;
+    sSalario.value = funcionario.salario;
+  }
+
+  modal.classList.add('active');
+  sNome.focus();
 }
 
-async function deleteItem(index) {
-    if (!itens[index]?.id) return;
-    try {
-        await fetch(`${API_BASE}/${itens[index].id}`, { method: 'DELETE' });
-        loadItens();
-    } catch (error) {
-        console.error('Erro ao deletar', error);
-    }
+function closeModal() {
+  modal.classList.remove('active');
+  funcionarioEmEdicao = undefined;
 }
 
-function insertItem(item, index) { 
-  let tr = document.createElement('tr') 
- 
-  tr.innerHTML = ` 
-    <td>${item.nome}</td> 
-    <td>${item.funcao}</td> 
-    <td>R$ ${item.salario}</td> 
-    <td class="acao"> 
-      <button onclick="editItem(${index})"><i class='bx bx-edit' 
-></i></button> 
-    </td> 
-    <td class="acao"> 
-      <button onclick="deleteItem(${index})"><i class='bx bx
-trash'></i></button> 
-    </td> 
-  ` 
-  tbody.appendChild(tr) 
-} 
- 
-btnSalvar.onclick = async e => { 
-   
-  if (sNome.value == '' || sFuncao.value == '' || sSalario.value == '') { 
-    return 
-  } 
- 
-  e.preventDefault(); 
- 
-  try { 
-    if (id !== undefined && itens[id]?.id) { 
-      // UPDATE 
-      await fetch(`${API_BASE}/${itens[id].id}`, { 
-        method: 'PUT', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify({ 
-          nome: sNome.value, 
-          funcao: sFuncao.value, 
-          salario: sSalario.value 
-        }) 
-      }); 
-    } else { 
-      // CREATE 
-      await fetch(API_BASE, { 
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify({ 
-          nome: sNome.value, 
-          funcao: sFuncao.value, 
-          salario: sSalario.value 
-        })
- }); 
-    } 
-    modal.classList.remove('active'); 
-    loadItens(); 
-    id = undefined; 
-  } catch (error) { 
-    console.error('Erro ao salvar:', error); 
-    alert('Erro ao salvar. Verifique se servidor está rodando.'); 
-  } 
-} 
- 
-async function loadItens() { 
-  itens = await getItensBD(); 
-  tbody.innerHTML = ''; 
-  itens.forEach((item, index) => { 
-    insertItem(item, index); 
-  }); 
-} 
- 
-// Carrega ao iniciar 
-loadItens(); 
- 
-const API_BASE = 'http://localhost:3000/api/funcionarios'; 
- 
-const getItensBD = async () => { 
-  try { 
-    const response = await fetch(API_BASE); 
-    if (!response.ok) throw new Error('Erro ao carregar'); 
-    return await response.json(); 
-  } catch (error) { 
-    console.error('Erro API:', error); 
-    return []; 
-  } 
-}; 
- 
-const setItensBD = () => {}; // Não mais necessário 
- 
-loadItens()
+function insertItem(funcionario) {
+  const tr = document.createElement('tr');
+  const nome = document.createElement('td');
+  const funcao = document.createElement('td');
+  const salario = document.createElement('td');
+  const editar = document.createElement('td');
+  const excluir = document.createElement('td');
+  const botaoEditar = document.createElement('button');
+  const botaoExcluir = document.createElement('button');
+  const iconeEditar = document.createElement('i');
+  const iconeExcluir = document.createElement('i');
 
-const express = require('express'); 
-const mysql = require('mysql2/promise'); 
-const cors = require('cors'); 
-const app = express(); 
- 
-app.use(cors()); 
-app.use(express.json()); 
- 
-const dbConfig = { 
-    host: 'localhost', 
-    user: 'root', 
-    password: '', 
-    database: 'crud_funcionarios' 
-}; 
- 
-const db = mysql.createPool(dbConfig); 
- 
-// GET /api/funcionarios 
-app.get('/api/funcionarios', async (req, res) => { 
-    try { 
-        const [rows] = await db.execute('SELECT * FROM funcionarios ORDER BY id DESC'); 
-        res.json(rows); 
-    } catch (error) { 
-        res.status(500).json({ error: error.message }); 
-    } 
-}); 
- 
-// POST /api/funcionarios 
-app.post('/api/funcionarios', async (req, res) => { 
-    try { 
-        const { nome, funcao, salario } = req.body; 
-        if (!nome || !funcao || !salario) { 
-            return res.status(400).json({ error: 'Campos obrigatórios' 
-}); 
-        } 
-        const [result] = await db.execute( 
-            'INSERT INTO funcionarios (nome, funcao, salario) VALUES (?, ?, ?)', 
-            [nome, funcao, parseFloat(salario)] 
-        ); 
-        res.json({ success: true, id: result.insertId }); 
-    } catch (error) { 
-        res.status(500).json({ error: error.message }); 
-    } 
-}); 
- 
-// PUT /api/funcionarios/:id 
-app.put('/api/funcionarios/:id', async (req, res) => {
-    try { 
-        const { nome, funcao, salario } = req.body; 
-        const id = req.params.id; 
-        await db.execute( 
-            'UPDATE funcionarios SET nome = ?, funcao = ?, salario = ? WHERE id = ?', 
-            [nome, funcao, parseFloat(salario), id] 
-        ); 
-        res.json({ success: true }); 
-    } catch (error) { 
-        res.status(500).json({ error: error.message }); 
-    } 
-}); 
- 
-// DELETE /api/funcionarios/:id 
-app.delete('/api/funcionarios/:id', async (req, res) => { 
-    try { 
-        const id = req.params.id; 
-        await db.execute('DELETE FROM funcionarios WHERE id = ?', 
-[id]); 
-        res.json({ success: true }); 
-    } catch (error) { 
-        res.status(500).json({ error: error.message }); 
-    } 
-}); 
- 
-const PORT = 3000; 
-app.listen(PORT, () => { 
-    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`); 
-    console.log('Endpoints: /api/funcionarios (GET/POST/PUT/:id/DELETE/:id)');
-}); 
+  nome.textContent = funcionario.nome;
+  funcao.textContent = funcionario.funcao;
+  salario.textContent = `R$ ${Number(funcionario.salario).toFixed(2)}`;
+  editar.className = 'acao';
+  excluir.className = 'acao';
+  botaoEditar.type = 'button';
+  botaoExcluir.type = 'button';
+  botaoEditar.setAttribute('aria-label', `Editar ${funcionario.nome}`);
+  botaoExcluir.setAttribute('aria-label', `Excluir ${funcionario.nome}`);
+  iconeEditar.className = 'bx bx-edit';
+  iconeExcluir.className = 'bx bx-trash';
+
+  botaoEditar.appendChild(iconeEditar);
+  botaoExcluir.appendChild(iconeExcluir);
+  botaoEditar.addEventListener('click', () => openModal(funcionario));
+  botaoExcluir.addEventListener('click', () => deleteItem(funcionario.id));
+  editar.appendChild(botaoEditar);
+  excluir.appendChild(botaoExcluir);
+  tr.append(nome, funcao, salario, editar, excluir);
+  tbody.appendChild(tr);
+}
+
+async function loadItens() {
+  try {
+    itens = await requestApi(API_BASE);
+    tbody.replaceChildren();
+    itens.forEach(insertItem);
+  } catch (error) {
+    console.error('Erro ao carregar funcionários:', error);
+    alert(`Erro ao carregar funcionários: ${error.message}`);
+  }
+}
+
+async function deleteItem(id) {
+  if (!window.confirm('Deseja realmente excluir este funcionário?')) return;
+
+  try {
+    await requestApi(`${API_BASE}/${id}`, { method: 'DELETE' });
+    await loadItens();
+  } catch (error) {
+    console.error('Erro ao excluir funcionário:', error);
+    alert(`Erro ao excluir funcionário: ${error.message}`);
+  }
+}
+
+document.querySelector('#new').addEventListener('click', () => openModal());
+document.querySelector('#cancelar').addEventListener('click', closeModal);
+modal.addEventListener('click', event => {
+  if (event.target === modal) closeModal();
+});
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  mensagemErro.textContent = '';
+
+  const funcionario = {
+    nome: sNome.value.trim(),
+    funcao: sFuncao.value.trim(),
+    salario: sSalario.value
+  };
+  const editando = funcionarioEmEdicao !== undefined;
+
+  try {
+    await requestApi(
+      editando ? `${API_BASE}/${funcionarioEmEdicao}` : API_BASE,
+      {
+        method: editando ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(funcionario)
+      }
+    );
+    closeModal();
+    await loadItens();
+  } catch (error) {
+    console.error('Erro ao salvar funcionário:', error);
+    mensagemErro.textContent = error.message;
+  }
+});
+
+loadItens();
