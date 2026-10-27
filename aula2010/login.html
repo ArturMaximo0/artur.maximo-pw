@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso administrativo</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="pagina-login">
+    <main class="cartao-login">
+        <p class="sobretitulo">Área administrativa</p>
+        <h1>Entrar</h1>
+        <p class="descricao-login">Acesse o cadastro de funcionários com sua conta.</p>
+        <form id="login-form">
+            <label for="login">Usuário</label>
+            <input id="login" name="login" type="text" maxlength="100" autocomplete="username" required>
+
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" maxlength="1024" autocomplete="current-password" required>
+
+            <p id="mensagem-erro" role="alert" aria-live="polite"></p>
+            <button type="submit" id="btnEntrar">Entrar</button>
+        </form>
+    </main>
+    <script src="/login.js" defer></script>
+</body>
+</html>
