@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: light;
+  font-family: 'Poppins', sans-serif;
+  color: #172033;
+  background: #f3f5fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #9db8ff;
+  outline-offset: 2px;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  min-height: 75vh;
+  margin: 12vh auto;
+  padding: 28px;
+  border: 1px solid #e6e9f1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgb(27 43 78 / 8%);
+}
+
+.header,
+.acoes-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1,
+.modal h2,
+.cartao-login h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+#new,
+#btnSalvar,
+#btnEntrar {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  color: #fff;
+  background: #3156d3;
+  font-weight: 600;
+}
+
+#new:hover,
+#btnSalvar:hover,
+#btnEntrar:hover {
+  background: #2445b4;
+}
+
+.botao-secundario {
+  border: 1px solid #d6dbea;
+  border-radius: 8px;
+  padding: 9px 16px;
+  color: #35415a;
+  background: #fff;
+}
+
+.botao-secundario:hover {
+  background: #f3f5fa;
+}
+
+#mensagem-status {
+  min-height: 1.5em;
+  color: #5b657a;
+}
+
+.divTable {
+  max-height: 60vh;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background: #f5f7fb;
+}
+
+th,
+td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e9ecf3;
+}
+
+th {
+  color: #525d73;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.acao {
+  width: 68px;
+  text-align: center;
+}
+
+.acao button {
+  border: 0;
+  padding: 5px;
+  color: #3156d3;
+  background: transparent;
+  font-size: 1.3rem;
+}
+
+.acao button:last-child {
+  color: #b42335;
+}
+
+.modal-container {
+  position: fixed;
+  z-index: 2;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(17 24 39 / 55%);
+}
+
+.modal-container.active {
+  display: flex;
+}
+
+.modal {
+  width: min(480px, 100%);
+  padding: 28px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 20%);
+}
+
+.modal h2 {
+  margin-bottom: 22px;
+}
+
+.modal form,
+.cartao-login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal label,
+.cartao-login label {
+  margin-bottom: 6px;
+  color: #424d63;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.modal input,
+.cartao-login input {
+  width: 100%;
+  margin-bottom: 18px;
+  border: 1px solid #d6dbea;
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+
+#mensagem-erro {
+  min-height: 1.5em;
+  margin: 0 0 12px;
+  color: #b42335;
+  font-size: 0.9rem;
+}
+
+#btnSalvar,
+#cancelar {
+  width: 100%;
+  margin-top: 8px;
+}
+
+#btnEntrar:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.pagina-login {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 10% 10%, rgb(91 126 237 / 16%), transparent 35%),
+    #f3f5fa;
+}
+
+.cartao-login {
+  width: min(420px, 100%);
+  padding: 38px;
+  border: 1px solid #e6e9f1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgb(27 43 78 / 10%);
+}
+
+.sobretitulo {
+  margin: 0 0 8px;
+  color: #3156d3;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.descricao-login {
+  margin: 8px 0 26px;
+  color: #68738a;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: calc(100% - 24px);
+    min-height: 80vh;
+    margin: 12px auto;
+    padding: 18px 12px;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    font-size: 1.05rem;
+  }
+
+  .acoes-cabecalho {
+    gap: 6px;
+  }
+
+  #new,
+  .botao-secundario {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  th,
+  td {
+    padding: 10px 6px;
+    font-size: 0.82rem;
+  }
+
+  .acao {
+    width: 48px;
+  }
+
+  .cartao-login {
+    padding: 28px 22px;
+  }
+}
